@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Session</title>
+
+<style>
+body {
+    margin: 0;
+    background: #0e0e0e;
+    color: #e6e6e6;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.message {
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.therapist {
+    color: #a6c1ff;
+}
+
+.user {
+    color: #ffffff;
+    text-align: right;
+}
+
+#inputBox {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #0e0e0e;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: #1a1a1a;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container"></div>
+
+<div id="inputBox">
+    <input id="input" placeholder="你可以慢慢输入..." autocomplete="off">
+</div>
+
+<script>
+const container = document.getElementById("container");
+const input = document.getElementById("input");
+
+const therapistLines = [
+    "你现在感觉如何？",
+    "你刚刚说的那一点，可以再展开一些吗？",
+    "这种感觉是什么时候开始的？",
+    "你觉得，是谁让你产生了这种想法？",
+    "你有没有试过假装一切都没事？",
+    "你害怕什么？",
+    "你不必急着回答。",
+    "……",
+    "你还在吗？"
+];
+
+let index = 0;
+
+function addMessage(text, type) {
+    const div = document.createElement("div");
+    div.className = "message " + type;
+    div.textContent = text;
+    container.appendChild(div);
+    window.scrollTo(0, document.body.scrollHeight);
+}
+
+addMessage("你好。我们可以慢慢来。", "therapist");
+
+input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+        addMessage(input.value, "user");
+        input.value = "";
+
+        setTimeout(() => {
+            addMessage(therapistLines[index], "therapist");
+            index = (index + 1) % therapistLines.length;
+        }, 800);
+    }
+});
+</script>
+
+</body>
+</html>
