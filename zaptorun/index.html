@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Access</title>
+<style>
+    body {
+        background: #000;
+        color: #fff;
+        font-family: monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    input, button {
+        background: #111;
+        color: #fff;
+        border: 1px solid #555;
+        padding: 8px;
+        margin-top: 10px;
+        font-family: inherit;
+    }
+    #text {
+        margin-top: 30px;
+        display: none;
+        max-width: 600px;
+        text-align: center;
+        line-height: 1.6;
+    }
+</style>
+</head>
+<body>
+
+<h2>Hey, you actually found my website!<br>
+
+I'm Amy. While I was trapped here, I discovered a bug in the program that turns the little dinosaur into a super invincible program.<br>
+
+I hid this program in the treasure chest in the back room! (You probably haven't encountered it yet.)<br>
+
+I hid the password to that treasure chest on this website.<br>
+
+I hid the password to this website in the games you're playing. There's a file called Code01.txt. You have to find them all!<br>
+    
+</h2>
+
+<input type="password" id="password" placeholder="••••••">
+<button onclick="check()">OK</button>
+
+<div id="text">
+    <p>
+        Hey! You found it!<br>
+
+The password to the treasure chest is: 9567<br>
+    </p>
+</div>
+
+<script>
+function check() {
+    const pwd = document.getElementById("password").value;
+    if (pwd === "47201") {
+        document.getElementById("text").style.display = "block";
+    } else {
+        alert("ACCESS DENIED");
+    }
+}
+</script>
+
+</body>
+</html>
