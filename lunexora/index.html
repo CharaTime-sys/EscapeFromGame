@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Question Bank</title>
+
+<style>
+body {
+    margin: 0;
+    background: #0e0e0e;
+    color: #e6e6e6;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.question {
+    margin-bottom: 16px;
+    line-height: 1.7;
+    color: #ffffff;
+}
+
+.meta {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+#passwordBox {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+}
+
+input {
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 8px 10px;
+    width: 200px;
+}
+
+button {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 8px 14px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+
+#hiddenText {
+    display: none;
+    margin-top: 20px;
+    color: #9bb3ff;
+    line-height: 1.8;
+}
+</style>
+</head>
+
+<body>
+<div id="container">
+
+<div class="meta">
+Access Level: Restricted
+</div>
+
+<div class="question">1. Choose humans.</div>
+<div class="question">2. He___God's messenger,you___God, and I___devout believer.</div>
+<div class="question">3. Is this a cat or a dog?</div>
+<div class="question">4. Is this an apple or a banana?</div>
+<div class="question">5. Are these lines straight?</div>
+<div class="question">6. Eating people is___</div>
+<div class="question">7. 1+1=___.5-2=___.4*9=___</div>
+
+<div id="passwordBox">
+    <div class="meta">Enter password to unlock the next section:</div>
+    <input type="password" id="pwd" placeholder="Password">
+    <button onclick="checkPassword()">Unlock</button>
+
+    <div id="hiddenText">
+        <hr>
+        <p>
+        The answer is right.<br>
+        The hidden message is on the 3*4/8-5+3.<br>
+        </p>
+    </div>
+</div>
+
+</div>
+
+<script>
+function checkPassword() {
+    const input = document.getElementById("pwd").value;
+    const correct = "4321675"; // ← 这里改成你自己的密码
+
+    if (input === correct) {
+        document.getElementById("hiddenText").style.display = "block";
+    } else {
+        alert("Wrong password.");
+    }
+}
+</script>
+
+</body>
+</html>
