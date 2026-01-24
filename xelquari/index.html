@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Observation Diary</title>
+
+<style>
+body {
+    margin: 0;
+    background: #0e0e0e;
+    color: #e6e6e6;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+#imageBox {
+    background: #111;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#imageBox img {
+    display: block;
+    margin: 0 auto;
+    max-width: none;
+    max-height: none;
+}
+
+#diary {
+    background: #151515;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.meta {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.line {
+    margin-bottom: 14px;
+    line-height: 1.7;
+}
+
+.therapist { color: #9bb3ff; }
+.patient { color: #ffffff; }
+
+#controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background: #222;
+    color: #eee;
+    border: 1px solid #333;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="imageBox">
+    <img id="pageImage" src="https://images.unsplash.com/photo-1507149833265-60c372daea22" alt="diary image">
+</div>
+
+<div id="diary">
+    <div class="meta" id="pageMeta"></div>
+    <div id="pageContent"></div>
+</div>
+
+<div id="controls">
+    <button onclick="prevPage()">← Previous Page</button>
+    <button onclick="nextPage()">Next page →</button>
+</div>
+
+</div>
+
+<script>
+const pages = [
+{
+    meta: "Day 01 · 05-M",
+    image: "images/1.jpg",
+    content: `
+    <div class="line therapist">Tester: Hey, this place is really cool. Why am I wearing a hood?</div>
+    <div class="line patient">F: It's for an experiment, you know, in exchange for the tour.</div>
+    <div class="line therapist">Tester: Oh, of course. The lens you gave me is amazing; it really can see ghosts..</div>
+    <div class="line patient">F: There's something even cooler coming up after we finish this experiment.</div>
+    <div class="line therapist">Tester: Oh, sure, I'm really looking forward to the next show.</div>    `
+},
+{
+    meta: "Day 07 · Observation Log",
+    image: "images/2.png",
+    content: `
+    <div class="line therapist">Tester: Woof...Do I really have to eat this? Woof...I don't want to...</div>
+    <div class="line patient">F: Don't worry, this experiment is safe. I'll turn you back after it's over.</div>
+    <div class="line therapist">Tester: Woof woof woof...I feel uncomfortable...Woof woof...I feel a part of me disappearing...</div>
+    <div class="line patient">F: This is normal...a part of you has become a dog's consciousness.</div>
+    <div class="line therapist">Tester: Woof woof...Okay, master...Woof woof...No, I don't want to...</div>
+    <div class="line patient">F: My guess will be proven soon...</div>
+    `
+},
+{
+    meta: "Day 14 · Observation Log",
+    image: "images/3.png",
+    content: `
+    <div class="line therapist">Tester: Woof... My hand... Woof</div>
+    <div class="line patient">F: Hmm, looks like the experiment was a success.</div>
+    <div class="line therapist">Tester: Woof... Woof... Who am I?</div>
+    <div class="line patient">F: If he believes he is a dog, then he will gradually become a dog.</div>
+    <div class="line patient">F: In other words, this world is made up of people's minds.</div>
+    `
+},
+{
+    meta: "Day 21 · Observation Log",
+    image: "images/4.png",
+    content: `
+    <div class="line therapist">Tester: Woof...I'm so cold...</div>
+    <div class="line therapist">Tester: Woof...Master...Woof...Where?</div>
+    <div class="line therapist">Tester: Woof...Am I human...Woof...or a dog?</div>
+    `
+},
+{
+    meta: "Day 30 · Observation Log",
+    image: "images/5.png",
+    content: `
+    <div class="line therapist">A: Oh no, I should have expected this, but this method is too extreme.</div>
+    <div class="line therapist">A: He felt that because someone had treated him this way, he wanted to treat others the same way.</div>
+    <div class="line therapist">A: I know we have some differences of opinion, but at least we should have communicated first.</div>
+    <div class="line therapist">A: There's nothing we can do now but let the player bury him.</div>
+    <div class="line therapist">A: And these websites: [website][website], hopefully what I've done will work.</div>
+    `
+}
+];
+
+let index = 0;
+
+function renderPage() {
+    document.getElementById("pageMeta").innerText = pages[index].meta;
+    document.getElementById("pageImage").src = pages[index].image;
+    document.getElementById("pageContent").innerHTML = pages[index].content;
+}
+
+function nextPage() {
+    if (index < pages.length - 1) {
+        index++;
+        renderPage();
+    }
+}
+
+function prevPage() {
+    if (index > 0) {
+        index--;
+        renderPage();
+    }
+}
+
+renderPage();
+</script>
+
+</body>
+</html>
