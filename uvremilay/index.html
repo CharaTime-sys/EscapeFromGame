@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RapidGrowth™ Infant Advancement Formula</title>
+
+<style>
+body {
+    margin: 0;
+    background: #ffffff;
+    font-family: Verdana, Arial, sans-serif;
+    color: #003366;
+    text-align: center;
+}
+
+header {
+    background: #d9f0ff;
+    padding: 60px 20px;
+    border-bottom: 3px solid #99ccff;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0;
+}
+
+.tagline {
+    font-size: 16px;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+.section {
+    padding: 60px 20px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.feature-box {
+    width: 280px;
+    background: #f9f9f9;
+    border: 1px solid #cce6ff;
+    padding: 20px;
+}
+
+.feature-box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.download-area {
+    background: #003366;
+    color: white;
+    padding: 80px 20px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 25px 60px;
+    background: #00ccff;
+    color: #003366;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background: #00aadd;
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.hidden-message {
+    margin-top: 20px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>RapidGrowth™</h1>
+    <div class="tagline">Infant Advancement Formula Division</div>
+</header>
+
+<section class="section">
+    <h2>Scientific Advancement for the Next Generation</h2>
+
+    <div class="features">
+
+        <div class="feature-box">
+            <img src="images/lab.jpg" alt="Laboratory">
+            <h3>Engineered Precision</h3>
+            <p>Developed in controlled laboratory environments.</p>
+        </div>
+
+        <div class="feature-box">
+            <img src="images/family.jpg" alt="Family">
+            <h3>Future Acceleration</h3>
+            <p>Optimized for accelerated developmental benchmarks.</p>
+        </div>
+
+        <div class="feature-box">
+            <img src="images/chart.jpg" alt="Growth Chart">
+            <h3>Measured Progress</h3>
+            <p>Because growth should never fall behind schedule.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="download-area">
+    <h2>Download Enhancement Module</h2>
+    <p>Install RapidGrowth™ integration package below.</p>
+
+    <button id="downloadBtn" class="download-button">
+        Download milk_powder.dll
+    </button>
+
+    <div class="note">
+        After downloading:<br>
+        Drag <strong>milk_powder.dll</strong> into your game to load the milk_powder.
+    </div>
+
+    <div id="integrationMessage" class="hidden-message">
+        ✔ System Integration Complete.
+    </div>
+
+</section>
+
+<script>
+document.getElementById("downloadBtn").addEventListener("click", function () {
+
+    const content = `
+RapidGrowth™ Integration Module
+Version: 2.3.1
+Status: ACTIVE
+
+[NOTICE]
+Drag this file into the game directory to initialize growth protocol.
+
+>> DEVELOPMENT ACCELERATION ENABLED
+`;
+
+    const blob = new Blob([content], { type: "application/octet-stream" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "milk_powder.dll";
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+
+    // 按钮状态变化
+    this.innerText = "Downloading...";
+    this.disabled = true;
+
+    setTimeout(() => {
+        document.getElementById("integrationMessage").style.opacity = 1;
+    }, 1500);
+});
+</script>
+
+</body>
+</html>
